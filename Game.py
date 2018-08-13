@@ -1,6 +1,6 @@
 class TicTacToe:
-
-    board_size = 3
+ 
+    board_size = 1
     nof_moves = 0
 
     def __init__(self):
