@@ -1,6 +1,5 @@
 class TicTacToe:
- 
-    board_size = 1
+    board_size = 3
     nof_moves = 0
 
     def __init__(self):
@@ -13,44 +12,54 @@ class TicTacToe:
                 print(self.tictactoe_board[i][j], end=' ')
             print()
 
-    def set_move(self, player, r_coord, c_coord):
-        self.tictactoe_board[r_coord][c_coord] = player
-        
-        check_game(player, r_coord, c_coord)
+    def check_position(self, r_coord, c_coord):
+        if self.tictactoe_board[r_coord][c_coord] == '.':
+            return True
+        else:
+            return False
 
-        self.nof_moves++
-
+    def increase_moves(self):
+        self.nof_moves = self.nof_moves + 1
 
     def check_game(self, player, r_coord, c_coord):
-        #check row
-        for i in range(self.board_size):
-            if(self.tictactoe_board[r_coor][i]!=player):
+        self.increase_moves()
+        # check row
+        for j in range(self.board_size):
+            if self.tictactoe_board[r_coord][j] != player:
                 break
-            if i == self.board_size-1:
-                #player nyert
-        
-        #check column
+            if j == self.board_size - 1:
+                print(player, ' nyert!')
+                return True
+
+        # check column
         for i in range(self.board_size):
-            if(self.tictactoe_board[i][c_coord]!=player):
+            if self.tictactoe_board[i][c_coord] != player:
                 break
-            if i == self.board_size-1:
-                #player nyert
-        
-        #check diagonal
+            if i == self.board_size - 1:
+                print(player, ' nyert!')
+                return True
+
+        # check diagonal
         if r_coord == c_coord:
             for i in range(self.board_size):
-                if self.tictactoe_board[i][i]!=player:
+                if self.tictactoe_board[i][i] != player:
                     break
-                if i == self.board_size-1
-                    #player nyert
-
-        #check antidiagonal
-        if r_coord + c_coord == self.board_size-1:
-            for i in rang(self.board_size):
-                if self.tictactoe_board[i][self.board_size-1-i]!=player
+                if i == self.board_size - 1:
+                    print(player, ' nyert!')
+                    return True
+        # check antidiagonal
+        if r_coord + c_coord == self.board_size - 1:
+            for i in range(self.board_size):
+                if self.tictactoe_board[i][self.board_size - 1 - i] != player:
                     break
-                if i == self.board_size-1:
-                    #player nyert
-        
+                if i == self.board_size - 1:
+                    print(player, ' nyert!')
+                    return True
         if self.nof_moves == self.board_size ** 2:
-            #dontetlen
+            print('dontetlen')
+            return True
+
+        return False
+
+    def set_move(self, player, r_coord, c_coord):
+        self.tictactoe_board[r_coord][c_coord] = player
