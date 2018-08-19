@@ -28,7 +28,8 @@ class TicTacToe:
             if self.tictactoe_board[r_coord][j] != player:
                 break
             if j == self.board_size - 1:
-                print(player, ' nyert!')
+                print()
+                print(player, 'nyert!')
                 return True
 
         # check column
@@ -36,7 +37,8 @@ class TicTacToe:
             if self.tictactoe_board[i][c_coord] != player:
                 break
             if i == self.board_size - 1:
-                print(player, ' nyert!')
+                print()
+                print(player, 'nyert!')
                 return True
 
         # check diagonal
@@ -45,17 +47,21 @@ class TicTacToe:
                 if self.tictactoe_board[i][i] != player:
                     break
                 if i == self.board_size - 1:
-                    print(player, ' nyert!')
+                    print()
+                    print(player, 'nyert!')
                     return True
+
         # check antidiagonal
         if r_coord + c_coord == self.board_size - 1:
             for i in range(self.board_size):
                 if self.tictactoe_board[i][self.board_size - 1 - i] != player:
                     break
                 if i == self.board_size - 1:
-                    print(player, ' nyert!')
+                    print()
+                    print(player, 'nyert!')
                     return True
         if self.nof_moves == self.board_size ** 2:
+            print()
             print('dontetlen')
             return True
 
